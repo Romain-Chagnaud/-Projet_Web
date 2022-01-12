@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request); 
         $date = new DateTime(); //recupération de la date d
-        $date->format('Y-m-d H:i:s');
+        $date->format('Y-m-d H:i:s'); // format de la date 
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
