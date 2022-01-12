@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +19,9 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $form->handleRequest($request); 
+        $date = new DateTime(); //recupération de la date d
+        $date->format('Y-m-d H:i:s');
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -29,6 +32,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setRegisterDate($date);
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
