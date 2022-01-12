@@ -55,7 +55,7 @@
             <a href={{path('accueil')}} > Accueil </a>
             <a href={{path('serie_index')}} >Series</a>
             <a href={{path('about')}}>A Propos</a>
-            {% if app.user %}
+           {% if app.user %} 
             <a href {{path('app_logout')}}>Déconnexion</a>
             {% else %}
             <a href={{path('app_login')}}>Connexion</a>
