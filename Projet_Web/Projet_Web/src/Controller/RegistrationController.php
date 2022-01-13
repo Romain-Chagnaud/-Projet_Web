@@ -21,7 +21,8 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request); 
+        $form->handleRequest($request);
+        //$user->setAdmin(true); //creation admin 
         $date = new DateTime(); //recupération de la date actuel
         $date->format('Y-m-d H:i:s'); // format de la date 
 
