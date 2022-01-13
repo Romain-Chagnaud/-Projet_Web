@@ -23,13 +23,13 @@
         }
     </style>
 
-    <form action="" method="get" class="form-example">
+    <form action : {{ path('serie_index')}} method="get" class="form-example">
         <div class="form-search">
             <label for="name">Enter series: </label>
-            <input type="text" name="search" id="searchbar" required>
+            <input type="text" name="search" id= "searchbar" required>
         </div>
         <div class="form-example">
-            <input type="submit" value="Subscribe!">
+            <input type="submit" value="recherche">
         </div>
 </form>
 
