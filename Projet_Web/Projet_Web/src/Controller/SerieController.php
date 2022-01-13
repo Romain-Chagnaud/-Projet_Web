@@ -15,11 +15,23 @@ class SerieController extends AbstractController
 {
     #[Route('/', name: 'serie_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
-    {
-        $series = $entityManager
+    {   
+
+        $search = $_GET['search'] ?? null; //récupérer mon form  
+        
+        if($search != null){
+            $query = $entityManager->createQuery(
+                "SELECT s FROM App:Series s
+                WHERE s.title like :search"  //requete préparer 
+            );
+            $query->setParameter('search', $search.'%');
+            $series = $query->getResult();
+        }else{
+            $series = $entityManager
             ->getRepository(Series::class)
             ->findBy(array(),array('title'=>'ASC')); 
-
+        }   
+       
         return $this->render('serie/index.html.twig', [
             'series' => $series,
         ]);
