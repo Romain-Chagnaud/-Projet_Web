@@ -45,6 +45,11 @@ class SerieController extends AbstractController
         ]);
     }
 
+    #[Route('/poster/{id}', name: 'series_poster', methods: ['GET'])]     public function poster(Series $serie): Response
+    {
+        return new Response(stream_get_contents($serie->getPoster()));
+    }
+
     #[Route('/{id}', name: 'serie_show', methods: ['GET'])]
     public function show(Series $series): Response
     {
