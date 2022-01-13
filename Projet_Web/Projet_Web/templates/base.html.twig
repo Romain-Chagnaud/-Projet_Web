@@ -52,18 +52,20 @@
     
     <body>
 
-        <div class="topnav">
-            <a href={{path('accueil')}} > Accueil </a>
-            <a href={{path('serie_index')}} >Series</a>
-            <a href={{path('about')}}>A Propos</a>
-           {% if app.user %}
-                <a href={{path('app_logout')}}>Déconnexion</a>
-                <a href={{path('serie_index')}}>[{{app.user.name}}] </a>
-            {% else %}
-            <a href={{path('app_login')}}>Connexion</a>
-            <a href={{path('app_register')}}>Inscription</a>
-            {% endif %}
-        </div>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+                {% if app.user %}
+                    <a class="navbar-brand" href={{path('accueil')}} > Accueil </a>
+                    <a class="navbar-brand" href={{path('serie_index')}} >Series</a>
+                    <a class="navbar-brand" href={{path('about')}}>A Propos</a>
+                    <a class="navbar-brand" href={{path('app_logout')}}>Déconnexion</a>
+                    <a class="navbar-brand" href={{path('serie_index')}}>[{{app.user.name}}] </a>
+                {% else %}
+                    <a class="navbar-brand" href={{path('app_login')}}>Connexion</a>
+                    <a class="navbar-brand" href={{path('app_register')}}>Inscription</a>
+                {% endif %}
+            </div>
+        </nav>
 
         {% block body %}{% endblock %}
     </body>
