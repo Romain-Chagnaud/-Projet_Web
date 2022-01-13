@@ -20,7 +20,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request); 
-        $date = new DateTime(); //recupération de la date d
+        $date = new DateTime(); //recupération de la date actuel
         $date->format('Y-m-d H:i:s'); // format de la date 
 
         if ($form->isSubmitted() && $form->isValid()) {
