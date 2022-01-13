@@ -262,7 +262,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
     public function getRoles(): array
     { 
-        return ['ROLE_USER']; 
+        return ['ROLE_USER']; //role user
     }
     public function eraseCredentials() 
     {}
