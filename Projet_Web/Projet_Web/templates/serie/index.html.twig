@@ -35,12 +35,14 @@
 
 
 {% for series in series %}
+<a href="{{ path('serie_show', {'id': series.id}) }}">
      <div class="polaroid">
             <img src={{ path('series_poster', {'id': series.id}) }} style="width:100%; height:90%;">
             <div class="container">
                 <p> {{series.title }} </p>
             </div>
         </div>
+</a>
 {% else %}
     <div class="container">
          <p> no records found </p>

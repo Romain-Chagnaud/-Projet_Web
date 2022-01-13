@@ -1,54 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Series{% endblock %}
+{% block title %} {{series.title}} {% endblock %}
 
 {% block body %}
-    <h1>Series</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ series.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ series.title }}</td>
-            </tr>
-            <tr>
-                <th>Plot</th>
-                <td>{{ series.plot }}</td>
-            </tr>
-            <tr>
-                <th>Imdb</th>
-                <td>{{ series.imdb }}</td>
-            </tr>
-            <tr>
-                <th>Poster</th>
-                <td>{{ series.poster }}</td>
-            </tr>
-            <tr>
-                <th>Director</th>
-                <td>{{ series.director }}</td>
-            </tr>
-            <tr>
-                <th>YoutubeTrailer</th>
-                <td>{{ series.youtubeTrailer }}</td>
-            </tr>
-            <tr>
-                <th>Awards</th>
-                <td>{{ series.awards }}</td>
-            </tr>
-            <tr>
-                <th>YearStart</th>
-                <td>{{ series.yearStart }}</td>
-            </tr>
-            <tr>
-                <th>YearEnd</th>
-                <td>{{ series.yearEnd }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <style>
+    
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .div1 { grid-area: 1 / 1 / 6 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 4; }
+    .div3 { grid-area: 2 / 2 / 3 / 4; }
+    .div4 { grid-area: 3 / 2 / 4 / 4; }
+    .div5 { grid-area: 4 / 2 / 5 / 4; }
+
+    </style>
+
+    <div class="parent">
+        <div class="div1"> <img src={{ path('series_poster', {'id': series.id}) }} style="width:100%;"> </div>
+        <div class="div2"> <h1>{{series.title}}</h1> </div>
+        <div class="div3"> <p>{{series.plot}}</p> </div>
+        <div class="div4"> <a href="{{series.youtubeTrailer}}">Trailer Youtube</a></div>
+        <div class="div5"> <p> {{series.yearStart}} - {{series.yearEnd}} </p> </div>
+    </div>
 
     <a href="{{ path('serie_index') }}">back to list</a>
 
