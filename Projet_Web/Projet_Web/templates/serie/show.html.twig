@@ -8,18 +8,18 @@
     
 .parent {
 display: grid;
-grid-template-columns: repeat(5, 1fr);
-grid-template-rows: repeat(5, 1fr);
+grid-template-columns: repeat(10, 1fr);
+grid-template-rows: repeat(9, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
 }
 
-.div1 { grid-area: 1 / 1 / 4 / 2; }
-.div2 { grid-area: 1 / 2 / 2 / 5; }
-.div3 { grid-area: 2 / 2 / 3 / 5; }
-.div4 { grid-area: 3 / 2 / 4 / 5; }
-.div5 { grid-area: 4 / 1 / 5 / 5; }
-
+.div1 { grid-area: 1 / 1 / 10 / 4; }
+.div2 { grid-area: 1 / 4 / 3 / 10; }
+.div3 { grid-area: 2 / 4 / 4 / 10; }
+.div4 { grid-area: 3 / 4 / 5 / 10; }
+.div5 { grid-area: 4 / 4 / 6 / 10; }
+.div6 { grid-area: 5 / 4 / 7 / 10; }
     img{
         margin-top: 25px;
         margin-bottom: 25px;
@@ -33,10 +33,14 @@ grid-row-gap: 0px;
 
     <div class="parent">
         <div class="div1"> <img src={{ path('series_poster', {'id': series.id}) }} style="width:100%;"> </div>
-        <div class="div2"> <h1>{{series.title}}</h1> </div>
+        <div style="margin-top:25px;"class="div2"> <h1>{{series.title}}</h1> </div>
         <div class="div3"> <p>{{series.plot}}</p> </div>
-        <div class="div4"> <a href="{{series.youtubeTrailer}}">Trailer Youtube</a></div>
-        <div class="div5"> <p> {{series.yearStart}} - {{series.yearEnd}} </p> </div>
+        <div class="div4"> {% set yt = series.youtubeTrailer|split('v=')%} 
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{yt[1]}}" title="YouTube video player"
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="div5"> <a href="{{series.imdb}}">Site IMDB </a> </div>
+        <div class="div6"> <p> {{series.yearStart}} - {{series.yearEnd}} </p></div>
     </div>
 
     <a href="{{ path('serie_index') }}">back to list</a>
