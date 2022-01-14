@@ -51,29 +51,21 @@
                     <a class="nav-link" href={{path('about')}}>A Propos</a>
                 </span>
                 {% endif %}
-<<<<<<< HEAD
-                {#% if  %}
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href={{path('accueil')}} > Accueil </a>
-                    </li>
-                     <li class="nav-item">
-                    <a class="nav-link" href={{path('serie_index')}} >Series</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href={{path('about')}}>A Propos</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href={{path('app_logout')}}>Déconnexion</a>
-                    </li>
-                </ul>
+
+                {% if app.user %}
+                {% if app.user.admin %}
+                <span>
+                    <a style="float:left;"href="{{ path('serie_new') }}">creation serie</a>
+                </span>
+                <span class="navbar-text">
+                    <a class="navbar-brand" style="float:right">[Compte Administrateur] </a>
+                </span>
                 <span class="navbar-text">
                     <a class="navbar-brand" style="float:right" href={{path('serie_index')}}>[{{app.user.name}}] </a>
                 </span>
-                {% endif %#}
-
-=======
->>>>>>> 090f30e1b8eac9b363be14ee78f50f95b6b2d467
+                {% endif %}
+                {% endif %}   
+                
             </div>
         </nav>
 

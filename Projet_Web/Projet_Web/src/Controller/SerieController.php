@@ -73,11 +73,9 @@ class SerieController extends AbstractController
        
         return $this->render('serie/index.html.twig', [
             'page' => $page,
+            'series' => $series
         ]);
     }
-
-
-
 
     #[Route('/new', name: 'serie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -99,7 +97,8 @@ class SerieController extends AbstractController
         ]);
     }
 
-    #[Route('/poster/{id}', name: 'series_poster', methods: ['GET'])]     public function poster(Series $serie): Response
+    #[Route('/poster/{id}', name: 'series_poster', methods: ['GET'])]     
+    public function poster(Series $serie): Response
     {
         return new Response(stream_get_contents($serie->getPoster()));
     }

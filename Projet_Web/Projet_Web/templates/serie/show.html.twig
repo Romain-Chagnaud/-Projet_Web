@@ -67,24 +67,16 @@
         </div>
         <!-- back to list -->
         <div7>
-            <a href="{{ path('serie_index') }}">back to list</a
-            {% if app.user.admin %}
-                <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
-            {% endif %}
+            <a href="{{ path('serie_index') }}">back to list</a>
         </div7>
     </div>
-
-<<<<<<< HEAD
-    <a href="{{ path('serie_index') }}">back to list</a>
-
     
-    <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
+    {% if app.user %}
+        <a href="{{ path('serie_edit', {'id': series.id})}}"></a>
+    {% if app.user.admin %}
+        <a href="{{ path('serie_edit', {'id': series.id})}}">edit</a> 
+        {{ include('serie/_delete_form.html.twig') }}         
+    {% endif %}
+    {% endif %}  
 
-    <h1>COUCOU</h1>
-
-=======
-    
->>>>>>> 090f30e1b8eac9b363be14ee78f50f95b6b2d467
-
-    {{ include('serie/_delete_form.html.twig') }}
 {% endblock %}
