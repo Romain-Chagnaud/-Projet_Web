@@ -22,30 +22,34 @@
 
     
     <body>
-        <style>
-            #blanc>div>a{
-                color : #dddddd;
-            }
-        </style>
-        <nav id="blanc" class="navbar navbar-light" style="background-color: #00aa99;">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#2831de;">
+            <div class="collapse navbar-collapse" id="navbarText">
                 {% if app.user %}
-                    <a class="navbar-brand" href={{path('accueil')}} > Accueil </a>
-                    <a class="navbar-brand" href={{path('serie_index')}} >Series</a>
-                    <a class="navbar-brand" href={{path('about')}}>A Propos</a>
-                    <a class="navbar-brand" href={{path('app_logout')}}>Déconnexion</a>
-                    <a class="navbar-brand" href={{path('serie_index')}}>[{{app.user.name}}] </a>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href={{path('accueil')}} > Accueil </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{path('serie_index')}} >Series</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{path('about')}}>A Propos</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href={{path('app_logout')}}>Déconnexion</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a class="navbar-brand" style="float:right" href={{path('serie_index')}}>[{{app.user.name}}] </a>
+                </span>
                 {% else %}
-                    <a class="navbar-brand" href={{path('app_login')}}>Connexion</a>
-                    <a class="navbar-brand" href={{path('app_register')}}>Inscription</a>
+                <span class="navbar-text"  style="float:right">
+                   <a class="nav-link" href={{path('app_login')}}>Connexion</a>
+                </span>
+                <span class="navbar-text" style="float:right">
+                    <a class="nav-link" href={{path('app_register')}}>Inscription</a>
+                </span>
                 {% endif %}
-<<<<<<< HEAD
-                {#% if app.user.admin %}
-=======
-                {#%  if app.user.Admin %}
->>>>>>> ed6f76c488bc645582bfea4a73b42e9cab3d7fc4
-                <a class="navbar-brand" href>[Admin] </a>
-                {% endif %#}
             </div>
         </nav>
 
