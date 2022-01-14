@@ -6,12 +6,14 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\Captcha\CaptchaBuilderInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Gregwar\Captcha\CaptchaBuilder;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 
 class RegistrationController extends AbstractController
@@ -25,7 +27,8 @@ class RegistrationController extends AbstractController
         //$user->setAdmin(true); //creation admin 
         $date = new DateTime(); //recupération de la date actuel
         $date->format('Y-m-d H:i:s'); // format de la date 
-
+       
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -38,8 +41,6 @@ class RegistrationController extends AbstractController
             $user->setRegisterDate($date);
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $this->redirectToRoute('accueil');
         }
 
