@@ -13,11 +13,6 @@
         {% block javascripts %}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         {% endblock %}
-        
-        
-
-
-
     </head>
 
     
@@ -29,8 +24,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href={{path('accueil')}} > Accueil </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href={{path('serie_index')}} >Series</a>
+                     <li class="nav-item">
+                    <a class="nav-link" href={{path('serie_index')}} >Series</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href={{path('about')}}>A Propos</a>
@@ -49,13 +44,33 @@
                 <span class="navbar-text" style="float:right">
                     <a class="nav-link" href={{path('app_register')}}>Inscription</a>
                 </span>
+                <span class="navbar-text" style="float:right">
+                    <a class="nav-link" href={{path('serie_index')}} >Series</a>
+                </span>
+                <span class="navbar-text" style="float:right">
+                    <a class="nav-link" href={{path('about')}}>A Propos</a>
+                </span>
                 {% endif %}
-<<<<<<< HEAD
-=======
-                {#%  if app.user.admin %}
-                <a class="navbar-brand" href>[Admin] </a>
+                {#% if  %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href={{path('accueil')}} > Accueil </a>
+                    </li>
+                     <li class="nav-item">
+                    <a class="nav-link" href={{path('serie_index')}} >Series</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={{path('about')}}>A Propos</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href={{path('app_logout')}}>Déconnexion</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <a class="navbar-brand" style="float:right" href={{path('serie_index')}}>[{{app.user.name}}] </a>
+                </span>
                 {% endif %#}
->>>>>>> 5caa2cad47aeb9d685b0b662bf8905ed32eb3d78
+
             </div>
         </nav>
 

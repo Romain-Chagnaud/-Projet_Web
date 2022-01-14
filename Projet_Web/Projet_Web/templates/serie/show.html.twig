@@ -41,9 +41,11 @@ grid-row-gap: 0px;
 
     <a href="{{ path('serie_index') }}">back to list</a>
 
-    {% if app.user.admin %}
-        <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
-    {% endif %}
+    
+    <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
+
+    <h1>COUCOU</h1>
+
 
     {{ include('serie/_delete_form.html.twig') }}
 {% endblock %}

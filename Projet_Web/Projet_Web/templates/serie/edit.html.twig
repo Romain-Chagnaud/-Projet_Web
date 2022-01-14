@@ -3,14 +3,12 @@
 {% block title %}Edit Series{% endblock %}
 
 {% block body %}
-{% if app.user.admin %}
     <h1>Edit Series</h1>
 
     {{ include('serie/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('serie_index') }}">back to list</a>
 
-    {{ include('serie/_delete_form.html.twig') }}
-{% endif %}
+    {{ include('serie/_delete_form.html.twig') }
 {% endblock %}
 
