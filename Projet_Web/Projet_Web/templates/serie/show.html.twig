@@ -6,48 +6,75 @@
 
     <style>
     
-.parent {
-display: grid;
-grid-template-columns: repeat(10, 1fr);
-grid-template-rows: repeat(9, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 0px;
-}
+        .parent {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
 
-.div1 { grid-area: 1 / 1 / 10 / 4; }
-.div2 { grid-area: 1 / 4 / 3 / 10; }
-.div3 { grid-area: 2 / 4 / 4 / 10; }
-.div4 { grid-area: 3 / 4 / 5 / 10; }
-.div5 { grid-area: 4 / 4 / 6 / 10; }
-.div6 { grid-area: 5 / 4 / 7 / 10; }
-    img{
-        margin-top: 25px;
-        margin-bottom: 25px;
-        border-radius: 10px;
-    }
-    div>div{
-        margin-left : 25px;
-    }
+        .div1 { grid-area: 1 / 1 / 8 / 4; }
+        .div2 { grid-area: 1 / 4 / 3 / 10; }
+        .div3 { grid-area: 2 / 4 / 4 / 10; }
+        .div4 { grid-area: 3 / 4 / 5 / 10; }
+        .div5 { grid-area: 5 / 4 / 6 / 10; }
+        .div6 { grid-area: 6 / 4 / 7 / 10; }
+        .div7 { grid-area: 6 / 9 / 7 / 10; }
+
+        img{
+            margin-top: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+        }
+        div>div{
+            margin-left : 25px;
+        }
 
     </style>
 
     <div class="parent">
-        <div class="div1"> <img src={{ path('series_poster', {'id': series.id}) }} style="width:100%;"> </div>
-        <div style="margin-top:25px;"class="div2"> <h1>{{series.title}}</h1> </div>
-        <div class="div3"> <p>{{series.plot}}</p> </div>
-        <div class="div4"> {% set yt = series.youtubeTrailer|split('v=')%} 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{yt[1]}}" title="YouTube video player"
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- poster -->
+        <div class="div1"> 
+            <img src={{ path('series_poster', {'id': series.id}) }} style="width:100%;">
         </div>
-        <div class="div5"> <a href="{{series.imdb}}">Site IMDB </a> </div>
-        <div class="div6"> <p> {{series.yearStart}} - {{series.yearEnd}} </p></div>
+        <!-- titre -->
+        <div style="margin-top:25px;"class="div2"> 
+            <h1>{{series.title}}</h1>
+        </div>
+        <!-- plot -->
+        <div class="div3"> 
+            <p>{{series.plot}}</p> 
+        </div>
+        <!-- youtube trailer -->
+        <div class="div4"> 
+            {% set yt = series.youtubeTrailer|split('v=')%} 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{yt[1]}}" title="YouTube video player"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- imdb -->
+        <div class="div5"> 
+            Site 
+            <a href="https://www.imdb.com/title/{{series.imdb}}/">IMDB.com</a>  
+        </div>
+        <!-- years -->
+        <div class="div6"> 
+            {% if  series.yearEnd != null %}
+            <p> {{series.yearStart}} - {{series.yearEnd}} </p>
+            {% else %}
+            <p> {{series.yearStart}} - ENCORE EN COURS</p>
+            {% endif %}
+        </div>
+        <!-- back to list -->
+        <div7>
+            <a href="{{ path('serie_index') }}">back to list</a
+            {% if app.user.admin %}
+                <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
+            {% endif %}
+        </div7>
     </div>
 
-    <a href="{{ path('serie_index') }}">back to list</a>
-
-    {% if app.user.admin %}
-        <a href="{{ path('serie_edit', {'id': series.id}) }}">edit</a>
-    {% endif %}
+    
 
     {{ include('serie/_delete_form.html.twig') }}
 {% endblock %}

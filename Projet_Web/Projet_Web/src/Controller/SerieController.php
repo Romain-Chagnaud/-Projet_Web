@@ -45,6 +45,40 @@ class SerieController extends AbstractController
         ]);
     }
 
+    #[Route('/', name: 'serie_sort', methods: ['GET'])]
+    public function sort(EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator): Response
+    {   
+
+        $sort = $_POST['sort'] ?? null; //récupérer le
+        
+        if($sort == 'value1'){
+            $series = $entityManager
+            ->getRepository(Series::class)
+            ->findBy(array(),array('title'=>'ASC')); 
+        }if($sort == 'value2'){
+            $series = $entityManager
+            ->getRepository(Series::class)
+            ->findBy(array(),array('title'=>'DSC'));
+        }else{
+            $series = $entityManager
+            ->getRepository(Series::class)
+            ->findBy(array(),array('title'=>'ASC')); 
+        }   
+
+        $page = $paginator->paginate(
+            $series,
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            4 // Nombre de résultats par page
+        );
+       
+        return $this->render('serie/index.html.twig', [
+            'page' => $page,
+        ]);
+    }
+
+
+
+
     #[Route('/new', name: 'serie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

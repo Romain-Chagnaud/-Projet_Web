@@ -24,13 +24,24 @@
         }
     </style>
 
+<div class="container-fluid" >
     <form action : {{ path('serie_index')}} method="get" class="form-example">
         <div class="form-search">
             <label for="name">Enter series: </label>
             <input type="text" name="search" id= "searchbar" required>
             <input type="submit" value="recherche">
         </div>
-</form>
+    </form>
+
+    <form>
+        <select name="sort" method="post" action : {{ path('serie_sort')}} class="form-select" aria-label="Default select example">
+            <option selected>Order by</option>
+            <option value="value1">A-Z</option>
+            <option value="value2">Z-A</option>
+        </select>
+        <input type="submit" name="submit" value="Go"/>
+    </form>
+</div>
 
 {% for series in page %}
 <a href="{{ path('serie_show', {'id': series.id}) }}">
