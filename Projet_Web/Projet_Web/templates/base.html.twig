@@ -64,9 +64,9 @@
                     <a class="navbar-brand" href={{path('app_login')}}>Connexion</a>
                     <a class="navbar-brand" href={{path('app_register')}}>Inscription</a>
                 {% endif %}
-                {#% if app.user.Admin %}
+                {% if app.user.Admin %}
                 <a class="navbar-brand" href>[Admin] </a>
-                {% endif %#}
+                {% endif %}
             </div>
         </nav>
 

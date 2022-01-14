@@ -41,8 +41,7 @@ class SerieController extends AbstractController
         );
        
         return $this->render('serie/index.html.twig', [
-            'series' => $series,
-            'page'=> $page,
+            'page' => $page,
         ]);
     }
 
