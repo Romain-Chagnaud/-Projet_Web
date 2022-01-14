@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Series;
 use App\Form\SeriesType;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SerieController extends AbstractController
 {
     #[Route('/', name: 'serie_index', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, Request $request, PaginatorInterface $paginator): Response
     {   
 
         $search = $_GET['search'] ?? null; //récupérer mon form  
@@ -31,9 +33,16 @@ class SerieController extends AbstractController
             ->getRepository(Series::class)
             ->findBy(array(),array('title'=>'ASC')); 
         }   
+
+        $page = $paginator->paginate(
+            $series,
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            4 // Nombre de résultats par page
+        );
        
         return $this->render('serie/index.html.twig', [
             'series' => $series,
+            'page'=> $page,
         ]);
     }
 
