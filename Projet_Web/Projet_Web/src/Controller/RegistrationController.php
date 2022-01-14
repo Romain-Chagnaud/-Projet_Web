@@ -27,7 +27,6 @@ class RegistrationController extends AbstractController
         //$user->setAdmin(true); //creation admin 
         $date = new DateTime(); //recupération de la date actuel
         $date->format('Y-m-d H:i:s'); // format de la date 
-       
         
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
