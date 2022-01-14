@@ -21,6 +21,7 @@
         .div5 { grid-area: 5 / 4 / 6 / 10; }
         .div6 { grid-area: 6 / 4 / 7 / 10; }
         .div7 { grid-area: 6 / 9 / 7 / 10; }
+        .div8 {grid-area: 6 / 10 / 12 / 6; }
 
         img{
             margin-top: 25px;
@@ -69,6 +70,13 @@
         <div7>
             <a href="{{ path('serie_index') }}">back to list</a>
         </div7>
+
+        <div class = "div8">
+            {% if series.awards != null %}
+            <p> {{series.awards}} </p>
+            {% endif %}
+        </div>
+
     </div>
     
     {% if app.user %}
