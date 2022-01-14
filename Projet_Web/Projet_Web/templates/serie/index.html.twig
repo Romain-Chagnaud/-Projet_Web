@@ -8,7 +8,7 @@
     <style>
 
         div.polaroid {
-             width: 22%;
+             width: 21%;
              height: 700px;
              margin : 25px;
              background-color: white;
@@ -50,10 +50,10 @@
 
 {% endfor %}
 
-
-    <a href="{{ path('serie_new') }}">Create new</a>
-
-    <div class= "pagination">
+    </br>
+    <div style="float:left; margin-right:20px; margin-left:25px;" class= "pagination">
         {{ knp_pagination_render(page) }}
     </div>
+
+    <a style="float:left;"href="{{ path('serie_new') }}">Create new</a>
 {% endblock %}
