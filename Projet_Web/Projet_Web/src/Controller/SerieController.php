@@ -138,24 +138,4 @@ class SerieController extends AbstractController
 
         return $this->redirectToRoute('serie_index', [], Response::HTTP_SEE_OTHER);
     }
-
-    #[Route('/new', name: 'serie_rating', methods: ['GET', 'POST'])]
-    public function rating(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $series = new Series();
-        $form = $this->createForm(SeriesType::class, $series);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($series);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('accueil', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('serie/new.html.twig', [
-            'series' => $series,
-            'form' => $form,
-        ]);
-    }
 }
