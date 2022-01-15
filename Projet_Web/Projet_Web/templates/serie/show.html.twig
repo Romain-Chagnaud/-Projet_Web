@@ -22,7 +22,8 @@
         .div6 { grid-area: 6 / 4 / 7 / 10; }
         .div7 { grid-area: 6 / 9 / 7 / 10; }
         .div8 {grid-area: 6 / 10 / 12 / 6; }
-        .div9 {grid-area: 6 / 10 / 15 / 10; }
+        .div9 {grid-area: 6 / 10 / 15 / 9; }
+        .div10 {grid-area: 4 / 10 / 15 / 10; }
         .div10 {grid-area: 4 / 10 / 15 / 10; }
         img{
             margin-top: 25px;
@@ -55,12 +56,10 @@
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <!-- imdb -->
-        {% if app.user and app.user.admin %}
         <div class="div5"> 
             Site 
             <a href="https://www.imdb.com/title/{{series.imdb}}/">IMDB.com</a>  
         </div>
-        {% endif %}
         <!-- years -->
         <div class="div6"> 
             {% if  series.yearEnd != null %}
@@ -81,12 +80,13 @@
         </div>
 
         <div class = "div9">
-        {% if app.user %}  
-            <a href="{{ path('rating_new')}}"><button>Votre note</button></a>
-        {% else %}    
-            <a href="{{ path('app_register')}}"><button>Votre note</button></a>
-        {% endif %}
+            {% if app.user %}  
+                <a href="{{path('rating_new')}}">Votre note</a>
+            {% else %}    
+                <a href="{{path('app_register')}}"><button>Votre note</button></a>
+            {% endif %}
         </div>
+        
         <div class= "div10">
             {% if app.user %}
                 <a href="{{ path('serie_edit', {'id': series.id})}}"></a>
@@ -97,24 +97,5 @@
         {% endif %}
         {% endif %}  
     </div>
-    
-    <div>
-    {% for series in series %}
-        <p>{{serie.title}} </p>
-    </div>
-     {% endfor %}
-     
-
-     {#% for rating in ratings %}
-        <a href="{{ path('rating_show', {'id': series.id})}}"> 
-            <div class="container">
-                <p> {{series.title }} </p>
-                <p>{{rating.id}}</p>
-                <p>{{rating.comment}}
-            </div>
-        </a>
-    {% endfor %#}
-
-
    
 {% endblock %}

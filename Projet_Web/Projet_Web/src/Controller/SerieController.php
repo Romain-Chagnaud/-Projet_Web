@@ -105,15 +105,10 @@ class SerieController extends AbstractController
 
     #[Route('/{id}', name: 'serie_show', methods: ['GET'])]
     public function show(Series $series, EntityManagerInterface $entityManager ): Response
-    {
-        $q = $entityManager->createQueryBuilder();
-        $q->select('title')
-            ->from('App\Entity\Episode', 'episode')
-            -> innerJoin('series.season','season')
-            ->groupBy('season.id');
-
+    {       
         return $this->render('serie/show.html.twig', [
             'series' => $series,
+            
         ]);
     }
 
