@@ -80,10 +80,14 @@
             {% endif %}
         </div>
 
+        
         <div class = "div9">
+        {% if app.user %}  
             <a href="{{ path('rating_new')}}">votre note</a>
+        {% else %}    
+            <a href="{{ path('app_register')}}">votre note</a>
+        {% endif %}
         </div>
-
     </div>
     
     {% if app.user %}

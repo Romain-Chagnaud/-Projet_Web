@@ -23,8 +23,10 @@
                 <td>{{ rating.comment }}</td>
                 <td>{{ rating.date ? rating.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('rating_show', {'id': rating.id}) }}">show</a>
-                    <a href="{{ path('rating_edit', {'id': rating.id}) }}">edit</a>
+                    <a href="{{ path('rating_show', {'id': rating.id}) }}"><button>Voir</button></a>
+                    <a href="{{ path('rating_edit', {'id': rating.id}) }}"><button>Editer</button></a>
+                   
+                    <a href="{{ path('rating_delete', {'id': rating.id}) }}"> <button>Supprimer</button></a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('rating_new') }}">Create new</a>
+    <a href="{{ path('rating_new') }}"><button type="button">Nouveau</button></a>
 {% endblock %}
