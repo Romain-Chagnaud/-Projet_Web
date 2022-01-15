@@ -2,29 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\Rating;
+use App\Entity\Episode;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\VarExporter\Internal\Values;
 
-class RatingType extends AbstractType
+class EpisodeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('value')
-            ->add('comment')
+            ->add('title')
             ->add('date')
+            ->add('imdb')
+            ->add('imdbrating')
+            ->add('number')
+            ->add('season')
             ->add('user')
-            ->add('series')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
-    {       
+    {
         $resolver->setDefaults([
-            'data_class' => Rating::class,
+            'data_class' => Episode::class,
         ]);
     }
 }

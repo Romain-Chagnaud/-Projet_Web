@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
+use App\Entity\User;
 
 #[Route('/rating')]
 class RatingController extends AbstractController
@@ -46,8 +48,8 @@ class RatingController extends AbstractController
     }
 
     #[Route('/{id}', name: 'rating_show', methods: ['GET'])]
-    public function show(Rating $rating): Response
-    {
+    public function show(Rating $rating, EntityManagerInterface $entityManager): Response
+    {   
         return $this->render('rating/show.html.twig', [
             'rating' => $rating,
         ]);

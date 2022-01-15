@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Controller;
-
+use DateTime;
 use App\Entity\Series;
+use App\Entity\User;
 use App\Form\SeriesType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -103,8 +104,14 @@ class SerieController extends AbstractController
     }
 
     #[Route('/{id}', name: 'serie_show', methods: ['GET'])]
-    public function show(Series $series): Response
+    public function show(Series $series, EntityManagerInterface $entityManager ): Response
     {
+        $q = $entityManager->createQueryBuilder();
+        $q->select('title')
+            ->from('App\Entity\Episode', 'episode')
+            -> innerJoin('series.season','season')
+            ->groupBy('season.id');
+
         return $this->render('serie/show.html.twig', [
             'series' => $series,
         ]);

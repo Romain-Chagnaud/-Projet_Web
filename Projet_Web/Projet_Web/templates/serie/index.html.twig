@@ -56,7 +56,6 @@
     <div class="container">
          <p> no records found </p>
     </div>
-
 {% endfor %}
 
     </br>
@@ -65,9 +64,9 @@
     </div>
 
     {% if app.user %}
-    {% if app.user.admin %}
-    <a style="float:left;"href="{{ path('serie_new') }}">creation serie</a>
-    {% endif %}
+        {% if app.user.admin %}
+            <a style="float:left;"href="{{ path('serie_new') }}"><button>Creation serie</button></a>
+        {% endif %}
     {% endif %}
 
 

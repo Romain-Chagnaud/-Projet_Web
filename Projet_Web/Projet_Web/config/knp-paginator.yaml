@@ -1,0 +1,4 @@
+knp_paginator:
+  page_range: 5
+  template:
+    pagination: '@knpPaginator/Pagination/bootstarp_V5_pagination.html.twig'

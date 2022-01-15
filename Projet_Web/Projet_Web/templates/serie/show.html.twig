@@ -23,7 +23,7 @@
         .div7 { grid-area: 6 / 9 / 7 / 10; }
         .div8 {grid-area: 6 / 10 / 12 / 6; }
         .div9 {grid-area: 6 / 10 / 15 / 10; }
-
+        .div10 {grid-area: 4 / 10 / 15 / 10; }
         img{
             margin-top: 25px;
             margin-bottom: 25px;
@@ -71,7 +71,7 @@
         </div>
         <!-- back to list -->
         <div7>
-            <a href="{{ path('serie_index') }}">back to list</a>
+            <a href="{{ path('serie_index') }}"><button>Retour</button></a>
         </div7>
 
         <div class = "div8">
@@ -80,22 +80,41 @@
             {% endif %}
         </div>
 
-        
         <div class = "div9">
         {% if app.user %}  
-            <a href="{{ path('rating_new')}}">votre note</a>
+            <a href="{{ path('rating_new')}}"><button>Votre note</button></a>
         {% else %}    
-            <a href="{{ path('app_register')}}">votre note</a>
+            <a href="{{ path('app_register')}}"><button>Votre note</button></a>
         {% endif %}
         </div>
+        <div class= "div10">
+            {% if app.user %}
+                <a href="{{ path('serie_edit', {'id': series.id})}}"></a>
+            {% if app.user.admin %}
+                <a href="{{ path('serie_edit', {'id': series.id})}}"><button>Edition</button></a> 
+            {{ include('serie/_delete_form.html.twig') }}
+        </div>        
+        {% endif %}
+        {% endif %}  
     </div>
     
-    {% if app.user %}
-        <a href="{{ path('serie_edit', {'id': series.id})}}"></a>
-    {% if app.user.admin %}
-        <a href="{{ path('serie_edit', {'id': series.id})}}">edit</a> 
-        {{ include('serie/_delete_form.html.twig') }}         
-    {% endif %}
-    {% endif %}  
+    <div>
+    {% for series in series %}
+        <p>{{serie.title}} </p>
+    </div>
+     {% endfor %}
+     
 
+     {#% for rating in ratings %}
+        <a href="{{ path('rating_show', {'id': series.id})}}"> 
+            <div class="container">
+                <p> {{series.title }} </p>
+                <p>{{rating.id}}</p>
+                <p>{{rating.comment}}
+            </div>
+        </a>
+    {% endfor %#}
+
+
+   
 {% endblock %}
