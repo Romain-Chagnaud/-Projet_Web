@@ -10,8 +10,22 @@
 </style>
 
 
+{% if app.user and app.user.admin %}
 <div class="example-wrapper">
-    <h1>Bienvenue</h1>
+    <h1>Bienvenue Administrateur</h1>
     <h3>Site fait par Augustin Colas et Romain Chagnaud</h3>
 </div>
+{% elseif app.user %}
+<div class="example-wrapper">
+    <h1>Bienvenue </h1>
+    <h3>Site fait par Augustin Colas et Romain Chagnaud</h3>
+</div>
+{% else %}
+<div class="example-wrapper">
+    <h1>Bienvenue </h1>
+    <h3>Site fait par Augustin Colas et Romain Chagnaud</h3>
+    <h3>Inscriver vous svp je rends</h3>
+</div>
+{% endif %}
+
 {% endblock %}

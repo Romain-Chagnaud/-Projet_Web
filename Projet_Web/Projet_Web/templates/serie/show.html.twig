@@ -54,10 +54,12 @@
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <!-- imdb -->
+        {% if app.user and app.user.admin %}
         <div class="div5"> 
             Site 
             <a href="https://www.imdb.com/title/{{series.imdb}}/">IMDB.com</a>  
         </div>
+        {% endif %}
         <!-- years -->
         <div class="div6"> 
             {% if  series.yearEnd != null %}
