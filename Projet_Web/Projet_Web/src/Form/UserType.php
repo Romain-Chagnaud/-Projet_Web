@@ -2,36 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Series;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class Series1Type extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('plot')
-            ->add('imdb')
-            ->add('poster')
-            ->add('director')
-            ->add('youtubeTrailer')
-            ->add('awards')
-            ->add('yearStart')
-            ->add('yearEnd')
-            ->add('actor')
+            ->add('name')
+            ->add('email')
+            ->add('password')
+            ->add('registerDate')
+            ->add('admin')
+            ->add('userId')
             ->add('country')
-            ->add('genre')
-            ->add('user')
+            ->add('episode')
+            ->add('series')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Series::class,
+            'data_class' => User::class,
         ]);
     }
 }

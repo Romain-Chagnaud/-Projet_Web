@@ -35,12 +35,8 @@
                         </li>
                     </ul>
                         <span class="navbar-text">
-                            <a class="navbar-brand" style="float:right" href={{path('rating_index')}}>[Votre espace] </a>
-                        </span>
-                    {% elseif  app.user and app.user.admin %}
-                        <span class="navbar-text">
-                            <a class="navbar-brand" style="float:right" href={{path('serie_new')}}>[Votre espace] </a>
-                        </span>
+                            <a class="navbar-brand" style="float:right" href={{path('rating_index')}}> Votre espace </a>
+                        </span>     
                 {% else %}
                     <span class="nav-item">
                         <a class="nav-link" href={{path('accueil')}} > Accueil </a>
@@ -64,6 +60,12 @@
                 {% if app.user %}
                 {% if app.user.admin %}
                 <span class="navbar-text">
+                            <a class="navbar-brand" style="float:right" href={{path('serie_new')}}> New Series </a>
+                </span>
+                 <span class="navbar-text">
+                            <a class="navbar-brand" style="float:right" href={{path('user_index')}}> GestionUser </a>
+                </span>
+                 <span class="navbar-text">
                     <a class="navbar-brand" style="float:right">[Compte Administrateur] </a>
                 </span>
 
