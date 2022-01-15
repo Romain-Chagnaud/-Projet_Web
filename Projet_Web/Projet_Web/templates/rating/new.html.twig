@@ -3,9 +3,9 @@
 {% block title %}New Rating{% endblock %}
 
 {% block body %}
-    <h1>Create new Rating</h1>
+    <h1>Votre note</h1>
 
     {{ include('rating/_form.html.twig') }}
 
-    <a href="{{ path('rating_index') }}">back to list</a>
+    <a href="{{ path('rating_index') }}"><button>Retour</button></a>
 {% endblock %}

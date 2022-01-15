@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccueilController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 <style>
@@ -17,14 +17,14 @@
 </div>
 {% elseif app.user %}
 <div class="example-wrapper">
-    <h1>Bienvenue </h1>
+    <h1>Bienvenue {{ app.user.name }} </h1>
     <h3>Site fait par Augustin Colas et Romain Chagnaud</h3>
 </div>
 {% else %}
 <div class="example-wrapper">
     <h1>Bienvenue </h1>
-    <h3>Site fait par Augustin Colas et Romain Chagnaud</h3>
-    <h3>Inscriver vous svp je rends</h3>
+    <h3>Inscriver vous si vous voulez plus de fonctionnalités</h3>
+    <h4>Site fait par Augustin Colas et Romain Chagnaud</h4>
 </div>
 {% endif %}
 

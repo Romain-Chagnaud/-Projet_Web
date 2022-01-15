@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('rating_index') }}">back to list</a>
+    <a href="{{ path('rating_index') }}"><button>Retour</button></a>
 
-    <a href="{{ path('rating_edit', {'id': rating.id}) }}">edit</a>
+    <a href="{{ path('rating_edit', {'id': rating.id}) }}"><button>edit</button></a>
 
     {{ include('rating/_delete_form.html.twig') }}
 {% endblock %}
