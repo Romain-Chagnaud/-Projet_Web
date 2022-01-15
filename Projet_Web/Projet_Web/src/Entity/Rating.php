@@ -31,7 +31,7 @@ class Rating
     /**
      * @var string|null
      *
-     * @ORM\Column(name="comment", type="text", length=0, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="comment", type="text", length=240, nullable=true, options={"default"="NULL"})
      */
     private $comment = 'NULL';
 
@@ -125,10 +125,5 @@ class Rating
         $this->series = $series;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getComment();    
     }
 }

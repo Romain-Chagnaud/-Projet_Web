@@ -31,12 +31,14 @@
                             <a class="nav-link" href={{path('about')}}>A Propos</a>
                         </li>
                         <li>
+                            <a class="navbar-brand" style="float:right" href={{path('serie_index')}}> Votre espace </a>
+                        </li> 
+                        <li>
                             <a class="nav-link" href={{path('app_logout')}}>Déconnexion</a>
-                        </li>
+                        </li>                        
                     </ul>
-                        <span class="navbar-text">
-                            <a class="navbar-brand" style="float:right" href={{path('rating_index')}}> Votre espace </a>
-                        </span>     
+                           
+                        
                 {% else %}
                     <span class="nav-item">
                         <a class="nav-link" href={{path('accueil')}} > Accueil </a>
@@ -68,8 +70,10 @@
                  <span class="navbar-text">
                     <a class="navbar-brand" style="float:right">[Compte Administrateur] </a>
                 </span>
-
+                <span class="navbar-text">
+                    <a class="navbar-brand" style="float:right" href={{path('rating_index')}}>Commentaire</a>
                 {% endif %}
+                </span>
                 {% endif %}       
             </div>
         </nav>

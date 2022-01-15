@@ -22,6 +22,7 @@
         .div6 { grid-area: 6 / 4 / 7 / 10; }
         .div7 { grid-area: 6 / 9 / 7 / 10; }
         .div8 {grid-area: 6 / 10 / 12 / 6; }
+        .div9 {grid-area: 6 / 10 / 15 / 10; }
 
         img{
             margin-top: 25px;
@@ -77,6 +78,10 @@
             {% if series.awards != null %}
             <p> {{series.awards}} </p>
             {% endif %}
+        </div>
+
+        <div class = "div9">
+            <a href="{{ path('rating_new')}}">votre note</a>
         </div>
 
     </div>
